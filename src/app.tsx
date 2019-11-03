@@ -1,5 +1,6 @@
 import React from 'react'
-import {BrowserRouter as Router, Link} from 'react-router-dom'
+// Use HashRouter for the easiest way to deploy to github pages
+import {HashRouter as Router, Link} from 'react-router-dom'
 import {ApolloProvider} from '@apollo/react-hooks'
 
 import Routes from './routes'
