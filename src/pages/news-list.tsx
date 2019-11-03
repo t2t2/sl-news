@@ -7,7 +7,7 @@ import Loading from '../components/loading'
 import ErrorComponent from '../components/error'
 import {errorPageLayout} from './_common'
 
-const LIST_NEWS = gql`
+export const LIST_NEWS = gql`
 	query LIST_NEWS($skip: Int!) {
 		newsList(skip: $skip, limit: 10) {
 			totalRows,

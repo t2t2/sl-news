@@ -7,7 +7,7 @@ import {errorPageLayout} from './_common'
 import Loading from '../components/loading'
 import ErrorComponent from '../components/error'
 
-const GET_NEWS = gql`
+export const GET_NEWS = gql`
 	query GET_NEWS($id: ID!) {
 		newsItem(id: $id) {
 			id,
