@@ -1,0 +1,17 @@
+.header {
+	.brand {
+		color: #F7FAFC;
+		display: block;
+		padding: 1rem 1rem;
+		text-decoration: none;
+	}
+	.flavor-text {
+		display: none;
+		font-size: 0.75rem;
+		padding-left: 1rem;
+
+		@include md {
+			display: inline;
+		}
+	}
+}

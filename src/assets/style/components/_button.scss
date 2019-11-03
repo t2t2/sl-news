@@ -1,0 +1,17 @@
+.button {
+	background-color: #2D3748;
+	border: 2px solid #4A5568;
+	color: #F7FAFC;
+	cursor: pointer;
+	padding: 0.5rem 1rem;
+	transition: background-color 0.2s, border-color 0.2s;
+
+	&:hover, &:active {
+		background-color: #4A5568;
+		border-color: #718096;
+	}
+
+	&.is-fullwidth {
+		width: 100%;
+	}
+}

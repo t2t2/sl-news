@@ -1,26 +1,34 @@
 import React from 'react'
-import logo from './logo.svg'
-import './app.css'
+import {BrowserRouter as Router, Link} from 'react-router-dom'
+import {ApolloProvider} from '@apollo/react-hooks'
 
-const App: React.FC = () => {
-	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/app.tsx</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
-		</div>
-	)
-}
+import Routes from './routes'
+import client from './api/client'
+
+const App: React.FC = () => (
+	<Router>
+		<ApolloProvider client={client}>
+			<div className="app">
+				<header className="app-header">
+					<div className="container">
+						<div className="header">
+							<Link
+								className="brand"
+								to="/"
+							>
+								SL News
+								<span className="flavor-text">The news... that stags</span>
+							</Link>
+						</div>
+					</div>
+				</header>
+
+				<div className="container">
+					<Routes />
+				</div>
+			</div>
+		</ApolloProvider>
+	</Router>
+)
 
 export default App
