@@ -21,7 +21,7 @@ jobs:
         CI: true
     - run: npm run build
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@master
+      uses: JamesIves/github-pages-deploy-action@2.0.3
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
