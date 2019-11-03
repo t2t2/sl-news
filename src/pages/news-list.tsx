@@ -1,12 +1,14 @@
-import React from 'react'
-import {gql} from 'apollo-boost'
 import {useQuery} from '@apollo/react-hooks'
+import {gql} from 'apollo-boost'
+import React from 'react'
 
 import NewsCard, {NewsItemSchema as NewsItem} from '../components/news-card'
 import Loading from '../components/loading'
+import ErrorComponent from '../components/error'
+import {errorPageLayout} from './_common'
 
-const GET_NEWS = gql`
-	query GetNewsList($skip: Int!) {
+const LIST_NEWS = gql`
+	query LIST_NEWS($skip: Int!) {
 		newsList(skip: $skip, limit: 10) {
 			totalRows,
 			rows {
@@ -29,7 +31,7 @@ interface NewsListVars {
 }
 
 const NewsList: React.FC = () => {
-	let {loading, error, data, fetchMore} = useQuery<NewsListData, NewsListVars>(GET_NEWS, {
+	const {loading, error, data, fetchMore} = useQuery<NewsListData, NewsListVars>(LIST_NEWS, {
 		variables: {
 			skip: 0
 		}
@@ -40,14 +42,18 @@ const NewsList: React.FC = () => {
 	}
 
 	if (error) {
-		return <p>Error <span role="img" aria-label="sad">😢</span></p>
+		return errorPageLayout(
+			<ErrorComponent
+				error={error}
+			/>
+		)
 	}
 
 	if (!data || data.newsList.rows.length === 0) {
-		return (
-			<div>
-				No Data
-			</div>
+		return errorPageLayout(
+			<ErrorComponent
+				message="No Data"
+			/>
 		)
 	}
 
@@ -78,26 +84,28 @@ const NewsList: React.FC = () => {
 	}
 
 	return (
-		<div className="section">
-			<div className="news-list">
-				{rows.map((newsItem: NewsItem, i) => (
-					<NewsCard
-						key={newsItem.id}
-						featured={i < 2}
-						item={newsItem}
-					/>
-				))}
+		<div className="container">
+			<div className="section">
+				<div className="news-list">
+					{rows.map((newsItem: NewsItem, i) => (
+						<NewsCard
+							key={newsItem.id}
+							featured={i < 2}
+							item={newsItem}
+						/>
+					))}
+				</div>
+				{
+					rows.length < totalRows ?
+						<button
+							className="button is-fullwidth"
+							onClick={loadMore}
+						>
+							Load More
+						</button> :
+						null
+				}
 			</div>
-			{
-				rows.length < totalRows ?
-					<button
-						className="button is-fullwidth"
-						onClick={loadMore}
-					>
-						Load More
-					</button> :
-					null
-			}
 		</div>
 	)
 }

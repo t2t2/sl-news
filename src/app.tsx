@@ -23,9 +23,7 @@ const App: React.FC = () => (
 					</div>
 				</header>
 
-				<div className="container">
-					<Routes />
-				</div>
+				<Routes />
 			</div>
 		</ApolloProvider>
 	</Router>

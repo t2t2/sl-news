@@ -15,7 +15,7 @@
 	flex: 1 1 100%;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 
-	transition: background-color 0.2s;
+	transition: background-color 0.2s, color 0.2s;
 
 	&:hover, &:active {
 		background-color: #4A5568;
@@ -33,10 +33,12 @@
 	.card-content {
 		align-self: center;
 		flex: 1 1 0;
-		padding: 1rem;
+		padding: 0.5rem 1rem;
 	}
 
 	.card-title {
+		font-size: 1.5rem;
+		line-height: 1.5;
 		margin: 0;
 		text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 4px;
 	}

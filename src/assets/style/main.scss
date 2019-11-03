@@ -4,7 +4,10 @@
 @import "./layout";
 
 @import "./components/button";
+@import "./components/error";
 @import "./components/header";
 @import "./components/loading";
-@import "./components/news-list";
+
+@import "./pages/news-detail";
+@import "./pages/news-list";
 
